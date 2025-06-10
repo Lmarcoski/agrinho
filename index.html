@@ -5,17 +5,427 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Conexão entre o Campo e a Cidade: Desafios e Consequências.</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css&quot;
-        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    
+    <!-- Google Fonts para tipografia moderna -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" 
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" 
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <style>
+        /* ===== VARIÁVEIS CSS MODERNAS ===== */
+        :root {
+            /* Paleta de cores moderna e sustentável */
+            --primary-color: #2d5a4e;      /* Verde escuro mais sofisticado */
+            --secondary-color: #1a1a1a;    /* Preto suave */
+            --accent-color: #4a8c6b;       /* Verde médio para destaque */
+            --text-color: #ffffff;
+            --text-dark: #2d3436;          /* Texto escuro com melhor contraste */
+            --background-color: #f8f9fa;   /* Fundo mais limpo */
+            --card-background: #ffffff;    /* Fundo dos cards */
+            --button-hover: #3d7058;       /* Hover mais sutil */
+            --border-color: #e9ecef;       /* Bordas suaves */
+            --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.15);
+            
+            /* Tipografia moderna */
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            
+            /* Espaçamentos consistentes */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            
+            /* Transições suaves */
+            --transition-fast: 0.2s ease;
+            --transition-medium: 0.3s ease;
+            --transition-slow: 0.5s ease;
+        }
+
+        /* ===== RESET E BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--background-color);
+            color: var(--text-dark);
+            line-height: 1.6; /* Linha height mais legível */
+            font-size: 16px;
+            scroll-behavior: smooth; /* Scroll suave para navegação */
+        }
+
+        /* ===== HEADER MODERNIZADO ===== */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            text-align: center;
+            padding: var(--spacing-xl) var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            border-radius: 16px;
+            box-shadow: var(--shadow-medium);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Efeito de overlay sutil no header */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.05);
+            pointer-events: none;
+        }
+
+        header h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.8rem, 4vw, 2.5rem); /* Responsivo */
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-color);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Container de imagem modernizado */
+        .image-container {
+            border-radius: 12px;
+            overflow: hidden;
+            margin: var(--spacing-md) auto;
+            width: min(90%, 500px); /* Mais responsivo */
+            box-shadow: var(--shadow-light);
+            transition: transform var(--transition-medium);
+        }
+
+        .image-container:hover {
+            transform: scale(1.02); /* Efeito hover sutil */
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: transform var(--transition-slow);
+        }
+
+        .image-container:hover img {
+            transform: scale(1.05);
+        }
+
+        header p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto var(--spacing-lg);
+            color: var(--text-color);
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+            opacity: 0.95;
+        }
+
+        /* ===== NAVEGAÇÃO MODERNIZADA ===== */
+        nav {
+            display: flex;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 12px 24px;
+            border-radius: 25px; /* Botões mais modernos */
+            font-weight: 500;
+            transition: all var(--transition-medium);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ===== CONTEÚDO PRINCIPAL MODERNIZADO ===== */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .conteudo {
+            background-color: var(--card-background);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-lg);
+            border-radius: 16px;
+            box-shadow: var(--shadow-light);
+            transition: all var(--transition-medium);
+            border: 1px solid var(--border-color);
+        }
+
+        .conteudo:hover {
+            box-shadow: var(--shadow-medium);
+            transform: translateY(-4px);
+        }
+
+        .conteudo h2 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: var(--spacing-sm);
+        }
+
+        /* Linha decorativa moderna nos títulos */
+        .conteudo h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        .conteudo h3 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            line-height: 1.7;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-dark);
+        }
+
+        .conteudo p {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-dark);
+        }
+
+        .conteudo ul {
+            padding-left: var(--spacing-md);
+        }
+
+        .conteudo li {
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.7;
+        }
+
+        /* ===== BOTÕES MODERNIZADOS ===== */
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: 14px 28px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: var(--text-color);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            margin-top: var(--spacing-md);
+            transition: all var(--transition-medium);
+            box-shadow: var(--shadow-light);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+        }
+
+        .cta-button i {
+            transition: transform var(--transition-fast);
+        }
+
+        .cta-button:hover i {
+            transform: translate(2px, -2px);
+        }
+
+        /* ===== FOOTER MODERNIZADO ===== */
+        footer {
+            text-align: center;
+            padding: var(--spacing-lg);
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #333 100%);
+            color: var(--text-color);
+            border-radius: 16px;
+            max-width: 1200px;
+            margin: var(--spacing-xl) auto var(--spacing-lg);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .cta-footer {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all var(--transition-medium);
+            display: inline-block;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .cta-footer:hover {
+            color: var(--accent-color);
+            transform: translateY(-1px);
+        }
+
+        footer p {
+            margin-top: var(--spacing-sm);
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* ===== IFRAME RESPONSIVO ===== */
+        iframe {
+            width: 100%;
+            max-width: 560px;
+            height: 315px;
+            border-radius: 12px;
+            margin-top: var(--spacing-md);
+            box-shadow: var(--shadow-light);
+        }
+
+        /* ===== RESPONSIVIDADE AVANÇADA ===== */
+        @media (max-width: 768px) {
+            :root {
+                --spacing-xl: 2rem;
+                --spacing-lg: 1.5rem;
+            }
+            
+            header {
+                padding: var(--spacing-lg) var(--spacing-sm);
+                margin-bottom: var(--spacing-md);
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            header p {
+                font-size: 1rem;
+                margin-bottom: var(--spacing-md);
+            }
+            
+            .image-container {
+                width: 95%;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: var(--spacing-xs);
+            }
+            
+            nav a {
+                padding: 10px 20px;
+                width: 200px;
+                text-align: center;
+            }
+            
+            main {
+                padding: 0 var(--spacing-sm);
+            }
+            
+            .conteudo {
+                padding: var(--spacing-lg);
+                margin-bottom: var(--spacing-md);
+            }
+            
+            .conteudo h2 {
+                font-size: 1.6rem;
+            }
+            
+            .cta-button {
+                width: 100%;
+                justify-content: center;
+                padding: 16px;
+            }
+            
+            footer {
+                margin: var(--spacing-lg) auto;
+                padding: var(--spacing-md);
+            }
+            
+            iframe {
+                height: 240px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .conteudo {
+                padding: var(--spacing-md);
+            }
+            
+            .conteudo h2 {
+                font-size: 1.4rem;
+            }
+            
+            iframe {
+                height: 200px;
+            }
+        }
+
+        /* ===== MELHORIAS DE ACESSIBILIDADE ===== */
+        /* Focus indicators mais visíveis */
+        a:focus,
+        button:focus {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+
+        /* Redução de movimento para usuários sensíveis */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Melhor contraste para texto */
+        @media (prefers-contrast: high) {
+            :root {
+                --text-dark: #000000;
+                --border-color: #666666;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <header>
-        <h1>A Conexão entre o Campo e a Cidade: Desafios e Consequências.</h1>
+        <h1>A Conexão entre o Campo e a Cidade: Desafios e Consequências</h1>
         <div class="image-container">
-            <img src="download.jpeg"alt="Foto das Cataratas do Iguaçu, um lugar com muitas árvores e mata nativa preservada.">
+            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Paisagem natural com floresta preservada representando a conexão entre campo e cidade">
         </div>
         <p>A relação entre o campo e a cidade é fundamental para o equilíbrio econômico, social e ambiental de uma nação. O campo é responsável por produzir alimentos, matérias-primas e recursos naturais essenciais para a vida urbana, enquanto as cidades oferecem infraestrutura, tecnologia e mercados para esses produtos. Entretanto, essa conexão enfrenta diversos desafios que impactam negativamente tanto as áreas rurais quanto urbanas.</p>
         <nav>
@@ -27,43 +437,39 @@
         </nav>
     </header>
 
-
     <main>
         <section id="problemas" class="conteudo">
             <h2>Os Problemas</h2>
             <article>
-                <h3>A desigualdade social no campo é uma das principais dificuldades enfrentadas, com muitos trabalhadores rurais tendo acesso limitado a serviços básicos como saúde, educação e saneamento. Isso contribui para o êxodo rural, onde jovens deixam suas comunidades em busca de melhores oportunidades na cidade, resultando no envelhecimento da população rural e na redução da força de trabalho agrícola.
-
-Além disso, a infraestrutura precária, como estradas ruins e falta de transporte adequado, dificulta o escoamento dos produtos rurais, elevando custos e ocasionando perdas. O crescimento urbano desordenado e práticas agrícolas insustentáveis provocam impactos ambientais, como desmatamento, poluição e degradação do solo, comprometendo a sustentabilidade da região.</h3>
+                <p>A desigualdade social no campo é uma das principais dificuldades enfrentadas, com muitos trabalhadores rurais tendo acesso limitado a serviços básicos como saúde, educação e saneamento. Isso contribui para o êxodo rural, onde jovens deixam suas comunidades em busca de melhores oportunidades na cidade, resultando no envelhecimento da população rural e na redução da força de trabalho agrícola.</p>
                 
-            </article>
-               
+                <p>Além disso, a infraestrutura precária, como estradas ruins e falta de transporte adequado, dificulta o escoamento dos produtos rurais, elevando custos e ocasionando perdas. O crescimento urbano desordenado e práticas agrícolas insustentáveis provocam impactos ambientais, como desmatamento, poluição e degradação do solo, comprometendo a sustentabilidade da região.</p>
             </article>
 
-            <a href="https://www.youtube.com/watch?v=ILh7nDEKGqc&pp=ygUXSW1wYWN0byBkbyBEZXNtYXRhbWVudG8%3D&quot; class="cta-button" target="_blank">Como impacta o mundo? <i
-                    class="fa-solid fa-arrow-up-right-from-square" style="color: var(--text-color);"></i></a>
+            <a href="https://www.youtube.com/watch?v=ILh7nDEKGqc&pp=ygUXSW1wYWN0byBkbyBEZXNtYXRhbWVudG8%3D" class="cta-button" target="_blank">
+                Como impacta o mundo? 
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
         </section>
 
         <section id="consequencias" class="conteudo">
             <h2>Consequências</h2>
-            <ul>
-                <li>Esses problemas resultam em desabastecimento nas cidades, com falta ou aumento de preços de alimentos e produtos essenciais. A migração do campo para a cidade causa perda cultural nas comunidades rurais, que veem suas tradições e modos de vida se esvaziarem. A crescente população urbana exerce pressão sobre os serviços públicos, como saúde e educação, frequentemente sobrecarregados e insuficientes para atender a demanda.
-
-Além disso, a degradação ambiental afeta a qualidade de vida tanto nas zonas rurais quanto urbanas, tornando urgente a adoção de práticas sustentáveis e políticas de desenvolvimento regional equilibrado.</li>
-                
-            </ul>
+            <p>Esses problemas resultam em desabastecimento nas cidades, com falta ou aumento de preços de alimentos e produtos essenciais. A migração do campo para a cidade causa perda cultural nas comunidades rurais, que veem suas tradições e modos de vida se esvaziarem.</p>
+            
+            <p>A crescente população urbana exerce pressão sobre os serviços públicos, como saúde e educação, frequentemente sobrecarregados e insuficientes para atender a demanda. Além disso, a degradação ambiental afeta a qualidade de vida tanto nas zonas rurais quanto urbanas, tornando urgente a adoção de práticas sustentáveis e políticas de desenvolvimento regional equilibrado.</p>
         </section>
 
         <section id="conclusao" class="conteudo">
             <h2>Conclusão</h2>
-            <p>Para fortalecer a conexão entre campo e cidade, é imprescindível investir em políticas públicas que promovam melhorias na infraestrutura, educação e saúde no meio rural, além de incentivar a permanência dos jovens no campo. A adoção de práticas agrícolas sustentáveis e o planejamento urbano responsável são essenciais para garantir o abastecimento das cidades, preservar o meio ambiente e valorizar as comunidades rurais, promovendo um desenvolvimento equilibrado e sustentável para todos..</p>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/ILh7nDEKGqc?si=feol6sZCHo1Cg-jQ&quot; title="YouTube video.">
+            <p>Para fortalecer a conexão entre campo e cidade, é imprescindível investir em políticas públicas que promovam melhorias na infraestrutura, educação e saúde no meio rural, além de incentivar a permanência dos jovens no campo. A adoção de práticas agrícolas sustentáveis e o planejamento urbano responsável são essenciais para garantir o abastecimento das cidades, preservar o meio ambiente e valorizar as comunidades rurais, promovendo um desenvolvimento equilibrado e sustentável para todos.</p>
+            
+            <iframe src="https://www.youtube.com/watch?v=lc6W-wKPNnc" title="Vídeo sobre impactos ambientais" allowfullscreen>
+            </iframe>
         </section>
-
     </main>
 
     <footer>
-        <a href="https://www.linkedin.com/in/femascheti&quot; class="cta-footer">Faça parte dessa causa!</a>
+        <a href="https://www.linkedin.com/in/femascheti" class="cta-footer">Faça parte dessa causa!</a>
         <p>2025 | @femascheti</p>
     </footer>
 </body>
